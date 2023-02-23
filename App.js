@@ -8,6 +8,8 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ScrollView,
+  SafeAreaView,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -60,8 +62,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     flexDirection: 'row',
     alignItems: 'center',
-    flexBasis: '47%',
-    height: 50,
+    flexBasis: '48%',
+    padding: 10,
     borderRadius: 30,
   },
   socialAuthButtonsContainer: {
@@ -72,19 +74,20 @@ const styles = StyleSheet.create({
 });
 
 const Login = () => (
-
-  <ImageBackground
-    source={require('./background.jpg')}
-    style={styles.container}>
-    <View style={styles.logoContainer}>
-      <Image style={styles.logo} source={require('./heartIcon.png')} />
-    </View>
-    <LoginForm flex={2.2} />
-  </ImageBackground>
-
+  <SafeAreaView style={styles.container}>
+    <ImageBackground
+      source={require('./background.jpg')}
+      style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require('./heartIcon.png')} />
+      </View>
+      <LoginForm flex={2.2} />
+    </ImageBackground>
+  </SafeAreaView>
 );
 
-const LoginForm = ({ flex }) => {
+const LoginForm = ({flex}) => {
+
   const handleLogin = () => {
     Alert.alert('Title', 'Successfully logged in', [
       {
@@ -92,44 +95,50 @@ const LoginForm = ({ flex }) => {
         onPress: () => console.log('Cancelled'),
         style: 'cancel',
       },
-      { text: 'OK', onPress: () => console.log('success') },
+      {text: 'OK', onPress: () => console.log('success')},
     ]);
-  }
+  };
+  
   return (
-    <View style={[styles.loginFormContainer, { flex }]}>
+    <View style={[styles.loginFormContainer, {flex}]}>
       <Text style={styles.labelText}>USERNAME</Text>
       <TextInput style={styles.input} />
       <Text style={styles.labelText}>PASSWORD</Text>
       <TextInput style={styles.input} secureTextEntry />
-      <View style={{ alignItems: 'flex-end' }}>
-        <Text style={[styles.labelText, { color: 'grey' }]}>
+      <View style={{alignItems: 'flex-end'}}>
+        <Text style={[styles.labelText, {color: 'grey'}]}>
           Forgot password?
         </Text>
       </View>
       <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginButtonText} onPress={handleLogin}>LOGIN</Text>
+        <Text style={styles.loginButtonText} onPress={handleLogin}>
+          LOGIN
+        </Text>
       </TouchableOpacity>
       <View style={styles.legend}>
-        <View style={{ borderWidth: 1, borderBottomColor: 'black', flex: 1 }} />
-        <View style={{ flex: 2, alignItems: 'center' }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 17, textAlign: 'center' }}>
+        <View style={{borderWidth: 1, borderBottomColor: 'black', flex: 1}} />
+        <View style={{alignItems: 'center', paddingHorizontal: 15}}>
+          <Text style={{fontWeight: 'bold', fontSize: 17, textAlign: 'center'}}>
             Or Connect With
           </Text>
         </View>
-        <View style={{ borderWidth: 1, borderBottomColor: 'black', flex: 1 }} />
+        <View style={{borderWidth: 1, borderBottomColor: 'black', flex: 1}} />
       </View>
       <View style={styles.socialAuthButtonsContainer}>
         <TouchableOpacity
-          style={[styles.socialAuthButton, { backgroundColor: '#36609F' }]}>
-          <Image style={{ height: '70%' }} source={require('./fbIcon.png')} />
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
+          style={[styles.socialAuthButton, {backgroundColor: '#36609F'}]}>
+          <Image style={{height: '100%'}} source={require('./fbIcon.png')} />
+          <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white'}}>
             Facebook
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.socialAuthButton, { backgroundColor: '#D93D2B' }]}>
-          <Image style={{ height: '70%' }} source={require('./googleIcon.png')} />
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
+          style={[styles.socialAuthButton, {backgroundColor: '#D93D2B'}]}>
+          <Image
+            style={{height: '100%'}}
+            source={require('./googleIcon.png')}
+          />
+          <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white'}}>
             Google
           </Text>
         </TouchableOpacity>
