@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import LoginScreen from './screens/LoginScreen';
 import {NavigationContainer} from '@react-navigation/native';
@@ -20,16 +19,6 @@ const App = () => {
           component={Dashboard}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
-          name="Parent"
-          component={Parent}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Settings"
-          component={Settings}
-          options={{ title: "Settings" }}
-        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
