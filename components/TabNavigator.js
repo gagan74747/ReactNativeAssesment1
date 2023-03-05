@@ -20,7 +20,7 @@ export default function TabNavigator({username}) {
         initialParams={{username}}
       />
       <Tab.Screen
-        name="Settings"
+        name="Profile"
         component={Profile}
         options={{headerShown: false}}
       />
